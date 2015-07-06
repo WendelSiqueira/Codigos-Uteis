@@ -1,0 +1,34 @@
+gitcreate(){
+    git checkout master;
+    git pull;
+    git checkout -b $1;
+}
+
+gitfunc(){
+    git add --all;
+    git commit -m "$1";
+}
+
+gitpush(){
+    val=$(git rev-parse --abbrev-ref HEAD)
+    git push origin $val
+}
+
+gitdelete(){
+    git checkout master;
+    git branch -d $1;
+}
+
+gitmerge(){
+    val=$(git rev-parse --abbrev-ref HEAD)
+    git checkout master;
+    git pull;
+    git checkout $  val;
+    git merge master;
+}
+
+alias commit=gitfunc
+alias create=gitcreate
+alias push=gitpush
+alias delete=gitdelete
+alias merge=gitmerge

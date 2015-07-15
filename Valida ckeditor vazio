@@ -1,0 +1,10 @@
+    function check_form() {
+
+        var editor_val = CKEDITOR.instances.id_content.document.getBody().getChild(0).getText() ;
+        if ($.trim(editor_val) == ''){
+            alert('Nenhum texto foi inserido') ;
+            return false ;
+        }
+
+	return true ;
+}

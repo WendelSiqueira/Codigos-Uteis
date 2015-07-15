@@ -26,9 +26,18 @@ gitmerge(){
     git checkout $  val;
     git merge master;
 }
+gitmaster(){
+    val=$(git rev-parse --abbrev-ref HEAD)
+    if [ "$val" != "master" ];then
+        git add --all;
+        git commit -m "Commit padrao pré troca para master";
+    fi
+    git checkout master;
+}
 
 alias commit=gitfunc
 alias create=gitcreate
 alias push=gitpush
 alias delete=gitdelete
 alias merge=gitmerge
+alias master=gitmaster
